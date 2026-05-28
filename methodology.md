@@ -2,7 +2,7 @@
 
 ## 1. Project Objective
 
-The objective of this GIS project was to produce a basin-scale lithological map of the Malwa Plateau, central India, identifying the spatial distribution of key rock formations — with a focus on Deccan Trap basalts — to support field sampling planning and CO₂ sequestration research. The map needed to be accurate, cartographically professional, and suitable for inclusion in research publications and conference presentations.
+The objective of this GIS project was to produce a basin-scale lithological map of the Malwa Plateau, central India, identifying the spatial distribution of key rock formations with a focus on Deccan Trap basalts to support field sampling planning and CO₂ sequestration research. The map needed to be accurate, cartographically professional, and suitable for inclusion in research publications and conference presentations.
 
 ---
 
@@ -32,80 +32,21 @@ The objective of this GIS project was to produce a basin-scale lithological map 
 1. Lithological polygon shapefiles were loaded into QGIS via **Layer → Add Layer → Add Vector Layer**
 2. Satellite basemap was integrated using the **QuickMapServices** plugin (Google Satellite / Esri World Imagery)
 3. Field GPS coordinates (Locations 4, 5, 6) were imported from CSV using **Layer → Add Delimited Text Layer**, with longitude as X field and latitude as Y field
-4. All layers were organised in the **Layers Panel** with a logical stacking order:
-   - Field locations (top)
-   - Road network
-   - Lithological polygons
-   - Satellite basemap (bottom)
+4. All layers were organised in the **Layers Panel** with a logical stacking order.
 5. Layer groups were named and colour-coded for clarity during editing
 
 ---
 
 ## 5. Spatial Data Cleaning & Validation
 
-- Lithological polygon topology was checked using **Vector → Geometry Tools → Check Validity** to identify and resolve gaps, overlaps, and self-intersections
-- The **Fix Geometries** tool was applied to correct invalid polygon geometries
-- Attribute tables were reviewed and cleaned: lithological class names were standardised to six categories — **Basalt, Alluvium, Sandstone, Shale/Mudstone, Granite, Other**
-- Duplicate features were identified and removed using **Select by Expression** followed by manual review
-- The study area boundary (Malwa Plateau extent) was digitised manually as a polygon layer and used to **clip** all input datasets using **Vector → Geoprocessing Tools → Clip**, ensuring consistent spatial extent across all layers
+- Lithological polygon topology was checked to identify and resolve gaps, overlaps, and self-intersections
+- Attribute tables were reviewed and cleaned: lithological class names were standardised to six categories. 
+- Duplicate features were identified and removed 
+- The study area boundary (Malwa Plateau extent) was digitised manually as a polygon layer 
 
 ---
 
-## 6. Attribute Classification & Symbology
-
-- Lithological polygons were styled using **Categorised Renderer** based on the lithology class attribute field
-- Colour scheme was selected for geological clarity and accessibility:
-
-| Lithological Unit | Colour Used | Rationale |
-|------------------|-------------|-----------|
-| Basalt | Light pink (#D4A0C0) | Standard Deccan basalt convention |
-| Alluvium | Magenta/deep pink (#C2185B) | Distinguishes recent deposits |
-| Sandstone | Light green (#AED581) | Sedimentary unit differentiation |
-| Shale/Mudstone | Dark green (#388E3C) | Fine-grained sedimentary contrast |
-| Granite | Light grey-pink (#E8C8D0) | Intrusive basement distinction |
-| Other | Pale green (#E0EED0) | Undifferentiated units |
-
-- Road network was styled as a thin brown line (width: 0.3mm) to serve as a reference layer without dominating the map
-- Field sampling locations were symbolised as **black triangles** (filled marker, size 4mm) with red italic labels for visual prominence against the basalt background
-
----
-
-## 7. Coordinate Grid & Map Extent
-
-- A **coordinate grid** was added at 2° intervals (latitude and longitude) using **Layout → Add Map → Grid** settings
-- Grid lines were styled as thin grey lines with coordinate labels at all four margins
-- Map extent was set to cover the full Malwa Plateau: **74°00′E to 78°00′E, 22°30′N to 25°30′N**
-
----
-
-## 8. Print Layout & Cartographic Design
-
-The final map was composed in **QGIS Print Layout** with the following elements:
-
-| Cartographic Element | Details |
-|---------------------|---------|
-| Map frame | Full-bleed within page border |
-| Legend | Positioned lower-right; all 6 lithological units + road symbol |
-| Scale bar | Black-and-white bar, 0–25–50 km, lower-left |
-| North arrow | Standard arrow style, upper-right |
-| Coordinate grid labels | 2° intervals, all four sides |
-| City labels | Key settlements labelled in grey italic for reference |
-| Page size | A3 landscape |
-| Export resolution | 300 DPI (PNG and PDF) |
-
-Legend entries were manually reordered for logical geological sequence and given clean, readable labels. Font used: **Arial**, sizes 8–10pt for labels and 10–12pt for legend title.
-
----
-
-## 9. Export
-
-- Final map exported as **PNG at 300 DPI** via **Layout → Export as Image**
-- PDF version also exported for print-ready use via **Layout → Export as PDF**
-- Both outputs reviewed for rendering accuracy before use in thesis and conference materials
-
----
-
-## 10. Key QGIS Skills Demonstrated
+## 6. Key QGIS Skills Demonstrated
 
 - Vector data import, CRS management, and re-projection
 - Topological cleaning and geometry validation
